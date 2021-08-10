@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
-using BCrypt.Net;
 
 namespace H5ServersideSHS.Code
 {
@@ -21,9 +20,5 @@ namespace H5ServersideSHS.Code
             return hashedValueAsString;
         }
 
-        public static void GetBcryptEncryption()
-        {
-           
-        }
     }
 }

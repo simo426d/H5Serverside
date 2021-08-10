@@ -27,6 +27,7 @@ namespace H5ServersideSHS
             services.AddControllersWithViews();
             services.AddSingleton<Class1>();
             services.AddTransient<HashingExample1>();
+            services.AddTransient<BcryptExample2>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
