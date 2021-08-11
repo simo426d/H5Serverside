@@ -1,5 +1,7 @@
-﻿using H5ServersideSHS.Code;
+﻿using H5ServersideSHS.Areas.Identity.Code;
+using H5ServersideSHS.Code;
 using H5ServersideSHS.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,17 +22,30 @@ namespace H5ServersideSHS.Controllers
 
         private readonly BcryptExample2 _bcryptExample2;
 
-        public HomeController(ILogger<HomeController> logger, Class1 class1, HashingExample1 hashingExample1, BcryptExample2 bcryptExample2)
+
+        private readonly IServiceProvider _serviceProvider;
+        private readonly MyUserRoleHandler _myUserRoleHandler;
+
+        public HomeController(ILogger<HomeController> logger, Class1 class1, HashingExample1 hashingExample1, 
+            BcryptExample2 bcryptExample2, IServiceProvider serviceProvider, MyUserRoleHandler myUserRoleHandler)
         {
             _logger = logger;
             _class1 = class1;
             _hashingExample1 = hashingExample1;
             _bcryptExample2 = bcryptExample2;
+
+            _serviceProvider = serviceProvider;
+            _myUserRoleHandler = myUserRoleHandler;
         }
 
-        public IActionResult Index()
+        // RequiredAuthenticateUser kommer fra min policy der er sat op inde i min Area/Identity/Hostingstartup. Som selv er navngivet.
+        [Authorize("RequiredAuthenticateUser")]
+        public async Task<IActionResult> Index()
         {
-            
+            // Bruges til at oprette brugerrollen 1 enkelt gang. 
+            //await _myUserRoleHandler.CreateRole("simon131975@hotmail.com", "Admin", _serviceProvider);
+
+
             string mytext = _class1.GetText();
             string mytext2 = _class1.GetText2();
             string txt = "Hello World";
@@ -51,6 +66,7 @@ namespace H5ServersideSHS.Controllers
             return View(model: myModel);
         }
 
+        [Authorize(Policy = "RequireAdminUser")]
         public IActionResult Privacy()
         {
             return View();

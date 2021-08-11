@@ -1,3 +1,4 @@
+using H5ServersideSHS.Areas.Identity.Code;
 using H5ServersideSHS.Code;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,13 +30,9 @@ namespace H5ServersideSHS
             services.AddTransient<HashingExample1>();
             services.AddTransient<BcryptExample2>();
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("RequiredAuthenticateUser", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    });
-                });
+            services.AddTransient<MyUserRoleHandler>();
+
+            // Dette svarer til at man instantiere objekter.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

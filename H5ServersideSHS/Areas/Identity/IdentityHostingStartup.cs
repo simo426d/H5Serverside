@@ -20,7 +20,20 @@ namespace H5ServersideSHS.Areas.Identity
                         context.Configuration.GetConnectionString("H5ServersideSHSContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<H5ServersideSHSContext>();
+                    
+                services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("RequiredAuthenticateUser", policy =>
+                    {
+                        policy.RequireAuthenticatedUser();
+                    });
+                    options.AddPolicy("RequireAdminUser", policy =>
+                    {
+                        policy.RequireRole("Admin");
+                    });
+                });
             });
         }
     }
