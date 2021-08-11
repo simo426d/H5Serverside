@@ -29,10 +29,13 @@ namespace H5ServersideSHS
             services.AddSingleton<Class1>();
             services.AddTransient<HashingExample1>();
             services.AddTransient<BcryptExample2>();
+            services.AddTransient<CryptExample3>();
+
+            services.AddDataProtection();
 
             services.AddTransient<MyUserRoleHandler>();
 
-            // Dette svarer til at man instantiere objekter.
+            // Dette svarer til at man instantiere objekter ovenover.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

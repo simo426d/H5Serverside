@@ -16,5 +16,8 @@ namespace H5ServersideSHS.Models
 
         public string Text5 { get; set; }
         public string Text6 { get; set; }
+
+        public string Text7 { get; set; }
+        public string Text8 { get; set; }
     }
 }
