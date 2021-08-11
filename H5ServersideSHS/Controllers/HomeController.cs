@@ -84,7 +84,9 @@ namespace H5ServersideSHS.Controllers
         [Authorize(Policy = "RequireAdminUser")]
         public IActionResult Privacy()
         {
-            return View();
+            InfoModel myModel = new() { Id = 1, Titel = "Placeholder", Beskrivelse = "Placeholder" };
+   
+            return View(model: myModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
