@@ -28,6 +28,14 @@ namespace H5ServersideSHS
             services.AddSingleton<Class1>();
             services.AddTransient<HashingExample1>();
             services.AddTransient<BcryptExample2>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequiredAuthenticateUser", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +56,7 @@ namespace H5ServersideSHS
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -55,6 +64,8 @@ namespace H5ServersideSHS
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }
