@@ -1,6 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@model H5ServersideSHS.Models.InfoModel;
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Privacy Info";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Titel" class="control-label"></label>
+                <input asp-for="Titel" class="form-control" /><br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Beskrivelse" class="control-label"></label>
+                <input asp-for="Beskrivelse" class="form-control" /><br />
+            </div>
+            <div class="form-group">
+                <input asp-for="UserName" class="form-control" value="@UserManager.GetUserName(User)" disabled hidden/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

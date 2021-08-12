@@ -22,7 +22,10 @@ namespace H5ServersideSHS.Areas.Identity.Code
                 roleResult = await RoleManager.CreateAsync(new IdentityRole(role));
             }
 
+            //IdentityUser identityUser = await UserManager.FindByIdAsync(id);
+
             IdentityUser identityUser = await UserManager.FindByEmailAsync(user);
+            
             await UserManager.AddToRoleAsync(identityUser, role);
         }
     }

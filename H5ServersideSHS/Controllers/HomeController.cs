@@ -25,6 +25,8 @@ namespace H5ServersideSHS.Controllers
 
         private readonly CryptExample3 _cryptExample3;
 
+        private readonly SQLQueries _sQLQueries;
+
         private readonly IDataProtector _dataProtector;
 
 
@@ -32,13 +34,15 @@ namespace H5ServersideSHS.Controllers
         private readonly MyUserRoleHandler _myUserRoleHandler;
 
         public HomeController(ILogger<HomeController> logger, Class1 class1, HashingExample1 hashingExample1, 
-            BcryptExample2 bcryptExample2, IServiceProvider serviceProvider, MyUserRoleHandler myUserRoleHandler, IDataProtectionProvider dataProtector, CryptExample3 cryptExample3)
+            BcryptExample2 bcryptExample2, IServiceProvider serviceProvider, MyUserRoleHandler myUserRoleHandler, IDataProtectionProvider dataProtector, 
+            CryptExample3 cryptExample3, SQLQueries sQLQueries)
         {
             _logger = logger;
             _class1 = class1;
             _hashingExample1 = hashingExample1;
             _bcryptExample2 = bcryptExample2;
             _cryptExample3 = cryptExample3;
+            _sQLQueries = sQLQueries;
 
             // Min nøgle
             _dataProtector = dataProtector.CreateProtector("H5ServersideProject.HomeController.SecretKey");
@@ -84,9 +88,15 @@ namespace H5ServersideSHS.Controllers
         [Authorize(Policy = "RequireAdminUser")]
         public IActionResult Privacy()
         {
-            InfoModel myModel = new() { Id = 1, Titel = "Placeholder", Beskrivelse = "Placeholder" };
+
+            
+
+           //string UserId = await _sQLQueries.GetId();
+
+            //InfoModel myInfoModel = new() { UserName = "asd", Titel = "asd", Beskrivelse = "Placeholder" };
    
-            return View(model: myModel);
+            //return View(model: myInfoModel);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

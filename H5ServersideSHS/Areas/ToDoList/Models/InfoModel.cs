@@ -9,6 +9,8 @@ namespace H5ServersideSHS.Models
     {
         public int Id { get; set; }
 
+        public string UserName { get; set; }
+
         public string Titel { get; set; }
 
         public string Beskrivelse { get; set; }

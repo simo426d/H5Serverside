@@ -30,6 +30,7 @@ namespace H5ServersideSHS
             services.AddTransient<HashingExample1>();
             services.AddTransient<BcryptExample2>();
             services.AddTransient<CryptExample3>();
+            services.AddTransient<SQLQueries>();
 
             services.AddDataProtection();
 
