@@ -1,8 +1,11 @@
 using H5ServersideSHS.Areas.Identity.Code;
+using H5ServersideSHS.Areas.ToDoList.Code;
+using H5ServersideSHS.Areas.ToDoList.Models;
 using H5ServersideSHS.Code;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,10 +34,14 @@ namespace H5ServersideSHS
             services.AddTransient<BcryptExample2>();
             services.AddTransient<CryptExample3>();
             services.AddTransient<SQLQueries>();
+            services.AddTransient<Crypt>();
 
             services.AddDataProtection();
 
             services.AddTransient<MyUserRoleHandler>();
+
+            var connection = Configuration.GetConnectionString("ToDoServerContextConnector");
+            services.AddDbContext<ToDoServerContext>(options => options.UseSqlServer(connection));
 
             // Dette svarer til at man instantiere objekter ovenover.
         }

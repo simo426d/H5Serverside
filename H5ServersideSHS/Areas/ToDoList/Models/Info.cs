@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace H5ServersideSHS.Models
+#nullable disable
+
+namespace H5ServersideSHS.Areas.ToDoList.Models
 {
-    public class InfoModel
+    public partial class Info
     {
         public int Id { get; set; }
-
         public string UserName { get; set; }
-
         public string Titel { get; set; }
-
         public string Beskrivelse { get; set; }
     }
 }

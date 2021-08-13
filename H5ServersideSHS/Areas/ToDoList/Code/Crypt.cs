@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace H5ServersideSHS.Code
+namespace H5ServersideSHS.Areas.ToDoList.Code
 {
-    public class CryptExample3
+    public class Crypt
     {
         public string Encrypt(string payload, IDataProtector _protector)
         {

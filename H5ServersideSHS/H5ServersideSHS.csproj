@@ -23,4 +23,13 @@
     <Folder Include="Areas\ToDoList\Views\ToDoList\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Files\H5ServersideSHS.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Serverside Programmering.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

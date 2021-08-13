@@ -89,7 +89,7 @@ namespace H5ServersideSHS.Controllers
         public IActionResult Privacy()
         {
 
-            
+            _sQLQueries.DisplayData();
 
            //string UserId = await _sQLQueries.GetId();
 
